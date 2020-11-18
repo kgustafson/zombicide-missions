@@ -1,0 +1,48 @@
+{% load static %}
+@font-face { font-family:Eurostile; src:url("eurostile.ttf.txt") format("truetype"); }
+
+body { padding:20px 100px 0 100px; margin:0; font-family:Eurostile; text-transform:uppercase; background:url("/static/images/biohazard.png") top right no-repeat; }
+
+#header { width:900px; margin:25px auto 15px auto; height:100px;}
+h1 { font-size:45pt; float:left; margin:-5px 0 0 10px; }
+.big { font-size:60pt; }
+
+#tileset { position:absolute; top:16px; line-height:42px; left:97px;  }
+#tileset a { border:3px solid #C9C9C9; display:block; width:70px; height:34px; margin-bottom:16px; font-size:18px; background-size:contain; color:transparent; text-align:center; padding-top:36px; }
+#tileset a:hover { border:3px solid black; color:white; text-shadow:-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black; }
+#lang { float:left; margin:0 3px 0 25px; line-height:16px; }
+#lang a { position:relative; }
+#lang a:hover { z-index:3; }
+#lang a .inactive { z-index:1; }
+#difficulty { float:left; line-height:23px; }
+#difficulty a { padding:2px 6px 2px 6px; position:relative; }
+#difficulty a:hover { z-index:3; }
+
+#scenarios { background-color:rgba(180, 180, 180, 0.7); width:80%; padding:3px; margin:auto; }
+table { border-collapse:collapse; width:100%; z-index:3; position:relative; }
+tr td+td+td { text-align:center; }
+td { padding:2px 0 2px 5px; height:16px; }
+
+.easy { background-color:rgba(50, 150, 255, .6); }
+.medium { background-color:rgba(255, 255, 0, .5); }
+.veryhard { background-color:rgba(128, 0, 128, .6); }
+.hard { background-color:rgba(255, 0, 0, .5); }
+
+
+.sort:hover { border-bottom:none; }
+
+a { color:black; text-decoration:none; }
+table a:hover { border-bottom:2px solid black; }
+#note { width:80%; padding-top:5px; text-align:right; margin:auto; font-size:9pt; }
+
+#footer { text-align:center; clear:both; background-color:black; padding:15px; font-size:10px; color:grey; letter-spacing:1px; }
+#footer a { padding:15px; opacity:0.7; color:grey; }
+#footer a:hover { opacity:1; color:white; }
+
+#bgl { width:100px; height:100%; position:fixed; top:0; left:0; background:url("/static/images/bg.png") left; background-position-y:-100px; background-size:cover; box-shadow:0 0 5px black; }
+#bgr { width:100px; height:100%; position:fixed; top:0; right:0; background:url("/static/images/bg.png"); background-position-y:-600px; background-size:cover; box-shadow:0 0 5px black; }
+#blood { position:absolute; top:0; right:100px; z-index:2; pointer-events:none; }
+#z1 { float:left; width:400px; margin-top:78px; margin-left:-20px; }
+#z2 { float:right; width:500px; vertical-align:bottom; margin-top:20px; margin-right:-20px;  }
+
+#content { transition:opacity 0.4s; }

@@ -1,0 +1,27 @@
+{% extends "missions/base.html" %}
+{% block content %}
+  <table cellspacing="3px">
+     <tr>
+        <td width="55px"><a href="?sort=title_id&tileset={{ tile_set }}&difficulty={{ diff_filter }}" class="sort"><img src="static/images/triangle.png"/></a></td>
+        <td>Title<a href="?sort=title&tileset={{ tile_set }}&difficulty={{ diff_filter }}" class="sort"><img src="static/images/triangle.png"/></a></td>
+        <td width="120px">Survivors <a href="?sort=survivors&tileset={{ tile_set }}&difficulty={{ diff_filter }}" class="sort"><img src="static/images/triangle.png"/></a></td>
+        <td width="110px">Length <a href="?sort=length&tileset={{ tile_set }}&difficulty={{ diff_filter }}" class="sort"><img src="static/images/triangle.png"/></a></td>
+        <td># Tiles<a href="?sort=num_tiles&tileset={{ tile_set }}&difficulty={{ diff_filter }}" class="sort"><img src="static/images/triangle.png"/></a></td>
+        <td>Tiles<a href="?sort=tiles&tileset={{ tile_set }}&difficulty={{ diff_filter }}" class="sort"><img src="static/images/triangle.png"/></a></td>
+        <td>Season<a href="?sort=season&tileset={{ tile_set }}&difficulty={{ diff_filter }}" class="sort"><img src="static/images/triangle.png"/></a></td>
+     </tr>
+     <tr height='3px'></tr>
+     {% for mission in missioners %}
+     <tr height='3px'></tr>
+     <tr class='{{ mission.difficulty }}'>
+        <td>{{ mission.title_id }}</td>
+        <td><a href='static/PDF/{{ mission.pdf_loc }}' target='_blank'>{{ mission.title }}</a></td>
+        <td>{{ mission.num_players }}</td>
+        <td>{{ mission.length_play }}</td>
+        <td>{{ mission.tiles.count }}</td>
+        <td>{% for tile in mission.tiles.all %}{{ tile.tile }}&nbsp;{% endfor %}</td>
+        <td>{% for season in mission.seasons.all %}{{ season.season }}&nbsp;{% endfor %}</td>
+     </tr>
+     {% endfor %}
+     </table>
+{% endblock content %}

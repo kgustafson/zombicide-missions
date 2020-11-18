@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Zombicide Missions</title>
+   <link rel="stylesheet" type="text/css" href="/static/missions/style.css">
+   <link rel="icon" href="favicon.ico" type="image/ico"/>
+   <meta name="description" content="The complete list of missions for Zombicide, the board game.">
+   <meta name="keywords" content="zombicide, scenarios, scenario, list, liste, zombies, zombie, board game, boardgame, jeu">
+   <script type="text/javascript">
+      var bgl = -100; var bgr = -600;
+      window.onmousewheel = function(e)
+	{
+		if (window.scrollY > 0 && window.scrollY < (document.body.scrollHeight - window.innerHeight))
+		{
+			bgl += e.wheelDelta / 10;
+			bgr += e.wheelDelta / 10;
+		}
+		document.getElementById("bgl").style.backgroundPositionY = bgl+"px";
+		document.getElementById("bgr").style.backgroundPositionY = bgr+"px";
+	}
+//	function livret(s, b)
+//	{
+//		if (b == "TCM") b = "le livret de règles de Toxic City Mall.";
+//		else if (b == "PO") b = "le livret de règles de Prison Outbreak.";
+//		else if (b == "RM") b = "le livret de règles de Rue Morgue.";
+//		else if (b == "AN") b = "le livret de règles d\'Angry Neighbors.";
+//		else if (b == "C1") b = "le Compendium #1.";
+//		else if (b == "C2") b = "le Compendium #2.";
+//		else b = "le livret de règles de Zombicide.";
+
+//		if (confirm("Cette mission n\'est consultable qu\'en anglais !\n\nVous le trouverez en français dans\n"+b)) window.open("PDF/"+s+".pdf");
+//	}
+	</script>
+    <link rel="stylesheet" type="text/css" href="static/missions/tooltipster.bundle.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="static/missions/tooltipster.bundle.min.js"></script>
+</head>
+<body>
+   <div id="content">
+      <div id="header">
+         <h1><a href="/"><span class="big">Z</span>ombicide &nbsp;<span class='big'>M</span>issions&nbsp;&nbsp;&nbsp;&nbsp;</a><br /></h1>
+         <div id="difficulty">
+            <table border="0">
+              <tr class="easy">
+                <td>
+                  <a href="?difficulty=easy&tileset={{ tile_set }}">Easy</a><a href="?sort=difficulty&tileset={{ tile_set }}" style="position:relative; z-index:3;"><img src="static/images/triangle.png"/></a>
+                </td>
+              </tr>
+              <tr class="medium">
+                <td>
+                  <a href="?difficulty=medium&tileset={{ tile_set }}">Medium</a>
+                </td>
+              </tr>
+              <tr class="hard">
+                <td>
+                  <a href="?difficulty=hard&tileset={{ tile_set }}">Hard</a>
+                </td>
+              </tr>
+              <tr class="veryhard">
+                <td>
+                  <a href="?difficulty=veryhard&tileset={{ tile_set }}">Very Hard</a>
+                </td>
+              </tr>
+            </table>
+         </div>
+      </div>
+      <div id="scenarios">
+        {% block content %}{% endblock %}
+      </div>
+</div>
+<div id= "tileset">
+  <table border="0">
+    <tr>
+      <td><a href="?tileset=S1" class="tooltip" title="Zombicide Season 1" style="margin-top:5px;background:url('/static/images/Z.png');background-size:contain;border-color:black;"/>{{ seasonCount.0 }}</a></td>
+    </tr>
+    <tr>
+      <td><a href="?tileset=S2" class="tooltip" title="Zombicide Season 2 - Prison Outbreak" style="background:url('/static/images/PO.png');background-size:contain;"/>{{ seasonCount.1 }}</a></td>
+    </tr>
+    <tr>
+      <td><a href="?tileset=TCM" class="tooltip" title="Toxic City Mall" style="background:url('/static/images/TCM.png');background-size:contain;"/>{{ seasonCount.2 }}</a></td>
+    </tr>
+    <tr>
+      <td><a href="?tileset=S3" class="tooltip" title="Zombicide Season 3 - Rue Morgue" style="background:url('/static/images/RM.png');background-size:contain;"/>{{ seasonCount.3 }}</a></td>
+    </tr>
+    <tr>
+      <td><a href="?tileset=AN" class="tooltip" title="Angry Neighbors" style="background:url('/static/images/AN.png');background-size:contain;"/>{{ seasonCount.4 }}</a></td>
+    </tr>
+    <tr>
+      <td><a href="?tileset=ZD" class="tooltip" title="Zombie Dogz" style="background:url('/static/images/ZD.png');background-size:contain;"/>{{ seasonCount.5 }}</a></td>
+    </tr>
+    <tr>
+      <td><a href="?tileset=DC" class="tooltip" title="Dog Companions" style="background:url('/static/images/DC.png');background-size:contain;"/>{{ seasonCount.6 }}</a></td>
+    </tr>
+  	<tr>
+      <td><a href="?tileset=ALL" class="tooltip" title="All" style="background:url('/static/images/ALL.png');background-size:contain;"/>{{ seasonCount.7 }}</a></td>
+    </tr>
+  </table>
+</div>
+
+<img src="static/images/blood.png" id="blood"/>
+<div id="bgl"></div>
+<div id="bgr"></div>
+<img src="static/images/z1Z.png" id="z1" />
+<img src="static/images/z2Z.png" id="z2"/>
+
+<div id="footer">
+	<a href="http://cmon-frontend.herokuapp.com/#/product/zombicide" target="_blank"><img src="{% static 'images/cmon.png' %}" height="50px"/></a>
+	<a href="https://zombicide.com/" target="_blank"><img src="{% static 'images/gg.png' %}" height="50px"/></a>
+	<a href="http://www.edgeent.com/jeux/collection/zombicide" target="_blank"><img src="static/images/edge.png" height="30px" style="margin-bottom:10px;"/></a>
+	<a href="http://boardgamegeek.com/boardgame/113924/zombicide" target="_blank"><img src="static/images/bgg.png" height="45px"/></a>
+	<a href="http://zombicide.eren-histarion.fr/" target="_blank"><img src="static/images/eh.png" height="45px"/></a>
+	<a href="http://solanuminfected.blogspot.fr/" target="_blank"><img src="static/images/SIN.png" height="35px" style="margin-bottom:5px;"/></a>
+	<div style="display:inline-block; text-align:left;line-height:13px;vertical-align:top; margin:4px 0 0 10px;">Copyright © 2020
+    <a href="http://www.coolminiornot.com/" target="_blank" style="padding:0;opacity:1;">CMON</a>,
+    <a href="http://guillotinegames.com/en/" target="_blank" style="padding:0;opacity:1;">GG</a> & <a href="http://www.edgeent.com/v2_fr/edge_minisite_sec.asp?eidm=279&esem=1" target="_blank" style="padding:0;opacity:1;">EDGE</a>
+    <br>Minisite originally created by <a href="mailto:contact@maximesimon.fr" target="_blank" style="padding:0;opacity:1;">Maxime SIMON</a>
+    <br>Updated to Django by <a href="mailto:kgustafson2@gmail.com" target="_blank" style="padding:0;opacity:1;">Kurt Gustafson</a>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-5887196-8', 'auto');
+  ga('send', 'pageview');
+
+  $('.tooltip').tooltipster({ side:'right', delay:0 });
+
+  //$('#tileset').hover(function() { $('#content').css('opacity', 0.5);}, function() { $('#content').css('opacity', 1); });
+</script>
+</body>
+</html>
